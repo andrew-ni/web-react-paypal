@@ -2,21 +2,17 @@
   "name": "web",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:4000/",
   "dependencies": {
-    "@apollo/client": "^3.5.8",
-    "@testing-library/jest-dom": "^5.14.1",
-    "@testing-library/react": "^12.0.0",
-    "@testing-library/user-event": "^13.2.1",
-    "@types/jest": "^27.4.0",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2"
+  },
+  "devDependencies": {
     "@types/node": "^17.0.15",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "graphql": "^16.3.0",
-    "react": "^17.0.2",
-    "react-dom": "^17.0.2",
-    "react-scripts": "5.0.0",
     "typescript": "^4.5.5",
-    "web-vitals": "^2.1.0"
+    "react-scripts": "5.0.0"
   },
   "scripts": {
     "start": "HTTPS=true SSL_CRT_FILE=/home/andrew/mkcert/localhost+2.pem SSL_KEY_FILE=/home/andrew/mkcert/localhost+2-key.pem react-scripts start",
