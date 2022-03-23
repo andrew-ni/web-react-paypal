@@ -4,15 +4,17 @@
   "private": true,
   "proxy": "http://localhost:4000/",
   "dependencies": {
+    "@paypal/react-paypal-js": "^7.6.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2"
   },
   "devDependencies": {
     "@types/node": "^17.0.15",
+    "@types/paypal-rest-sdk": "^1.7.6",
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
-    "typescript": "^4.5.5",
-    "react-scripts": "5.0.0"
+    "react-scripts": "5.0.0",
+    "typescript": "^4.5.5"
   },
   "scripts": {
     "start": "HTTPS=true SSL_CRT_FILE=/home/andrew/mkcert/localhost+2.pem SSL_KEY_FILE=/home/andrew/mkcert/localhost+2-key.pem react-scripts start",

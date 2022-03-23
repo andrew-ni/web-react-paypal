@@ -1,10 +1,12 @@
 import { Paypal } from './Paypal';
 
-function App() {
+export default function App() {
   const handleClick = (e: any) => {
     console.log(e);
-    fetch('/ping').then(res => res.json()).then(json => console.log(json));
-  }
+    fetch('/ping')
+      .then(res => res.json())
+      .then(json => console.log(json));
+  };
   return (
     <div>
       <button onClick={handleClick}>ping</button>
@@ -12,10 +14,6 @@ function App() {
     </div>
   );
 }
-
-export default App;
-
-
 
 // export const serverClient = new ApolloClient({
 //   uri: 'https://localhost:4000/graphql',
