@@ -21,16 +21,21 @@ export const Paypal: React.FC<PaypalProps> = ({}) => {
 
   const createOrder = (data: any, actions: any) => {
     return actions.order.create({
+      intent: 'CAPTURE',
       purchase_units: [
         {
           amount: {
-            value: paymentAmount,
+            value: '2',
+          },
+          payee: {
+            merchant_id: 'K52YS7NC5Q9A8',
           },
         },
       ],
     });
   };
   const onApprove = (data: any, actions: any) => {
+    console.log(data);
     return actions.order.capture().then((details: any) => {
       const name = details.payer.name.given_name;
       alert(`Transaction completed by ${name}`);
@@ -42,7 +47,7 @@ export const Paypal: React.FC<PaypalProps> = ({}) => {
       <p>PAYPAL</p>
       <div>
         <span>
-          <p>Payee Email</p>
+          Payee Email
           <input
             ref={payeeEmailInputRef}
             type="text"
@@ -54,7 +59,7 @@ export const Paypal: React.FC<PaypalProps> = ({}) => {
       </div>
       <div>
         <span>
-          <p>Payee ID</p>
+          Payee ID
           <input
             ref={payeeIdInputRef}
             type="text"
@@ -62,11 +67,12 @@ export const Paypal: React.FC<PaypalProps> = ({}) => {
             value={payeeIdInput}
             onChange={e => setPayeeIdInput(e.target.value)}
           />
+          {payeeIdInput}
         </span>
       </div>
       <div>
         <span>
-          <p>Payment Amount</p>
+          Payment Amount
           <input
             ref={paymentAmountInputRef}
             type="number"
@@ -79,7 +85,11 @@ export const Paypal: React.FC<PaypalProps> = ({}) => {
       <PayPalScriptProvider
         options={{ 'client-id': 'AbZEz7Y2Qd7pxBNKvIVMSXr4GYHBGwR60sAriXFCN4jqzyNHS3KsOsNCOpzR9vMqZfvxBKK-jw3aTkWa' }}
       >
-        <PayPalButtons style={{ layout: 'horizontal' }} createOrder={createOrder} onApprove={onApprove} />
+        <PayPalButtons
+          style={{ layout: 'horizontal' }}
+          createOrder={createOrder}
+          onApprove={onApprove}
+        />
       </PayPalScriptProvider>
     </>
   );
