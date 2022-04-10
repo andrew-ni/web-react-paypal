@@ -8,8 +8,14 @@ interface PaypalCheckoutButtonProps {
 
 export const PaypalCheckoutButton: React.FC<PaypalCheckoutButtonProps> = props => {
   const [paidFor, setPaidFor] = useState(false);
-  const [error, setError] = useState<any>(null)
+  const [error, setError] = useState<any>(null);
+  let [paymentAmount, setPaymentAmount] = useState<number>(10);
+
   const { product } = props;
+
+  const func = () => {
+    return paymentAmount;
+  };
 
   const handleApprove = (orderId: string) => {
     // call backend server to fulfill order
@@ -37,6 +43,11 @@ export const PaypalCheckoutButton: React.FC<PaypalCheckoutButtonProps> = props =
 
   return (
     <>
+      <span>
+        <p>Payment Amount</p>
+        <input type="number" step="1" value={paymentAmount} onChange={e => setPaymentAmount(e.target.valueAsNumber)} />
+      </span>
+      <p>{func()}</p>
       <p>PAYPAL CHECKOUT COMPONENT</p>
       <PayPalButtons
         style={{
@@ -52,11 +63,12 @@ export const PaypalCheckoutButton: React.FC<PaypalCheckoutButtonProps> = props =
               {
                 description: product.description,
                 amount: {
-                  value: product.price.toFixed(2),
+                  value: func().toFixed(2), // stale closure issue!!!!!!!!!!
                 },
-                payee: {
-                  merchant_id: 'PHH9YUA5U8734',
-                }
+                // payee: {
+                //   merchant_id: { merchantId },
+                //   // email_address: 'sb-k4qnh15685235@personal.example.com',
+                // },
               },
             ],
           });
@@ -67,7 +79,7 @@ export const PaypalCheckoutButton: React.FC<PaypalCheckoutButtonProps> = props =
 
           handleApprove(data.orderID);
         }}
-        onError={(err) => {
+        onError={err => {
           setError(err);
           console.error(err);
         }}

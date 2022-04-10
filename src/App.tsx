@@ -17,7 +17,7 @@ export default function App() {
     <PayPalScriptProvider
       options={{
         'client-id': 'AbZEz7Y2Qd7pxBNKvIVMSXr4GYHBGwR60sAriXFCN4jqzyNHS3KsOsNCOpzR9vMqZfvxBKK-jw3aTkWa',
-        'merchant-id': 'PHH9YUA5U8734',
+        // 'merchant-id': 'DPHZYY53XG6G4', // not authorized error; think partner thing is required here
       }}
     >
       <div>
@@ -28,20 +28,3 @@ export default function App() {
     </PayPalScriptProvider>
   );
 }
-
-// export const serverClient = new ApolloClient({
-//   uri: 'https://localhost:4000/graphql',
-//   cache: new InMemoryCache(),
-//   headers: {
-//     'x-forwarded-proto': 'https',
-//   },
-// });
-
-// const link = createHttpLink({
-//   uri: 'https://localhost:4000/graphql',
-//   credentials: 'include',
-// });
-// export const serverClient = new ApolloClient({
-//   cache: new InMemoryCache(),
-//   link,
-// });
